@@ -14,7 +14,10 @@ MonoBehaviour:
   id: salts
   title: Salts
   author: eXish
-  description: 
+  description: "Exorcise a ghost by tapping it a specific number of times.\n\r\nThis
+    is a reuploaded item from a creator who wishes to remain anonymous.\r\n\r\nHTML:
+    https://ktane.timwi.de/HTML/Salts.html\r\nPDF: https://ktane.timwi.de/PDF/Salts.pdf\r\n\r\nSalts
+    (salts) v1.5.0\r\nMaintained by eXish\r\nTwitch Plays supported"
   version: 1.5.0
   outputFolder: build
-  previewImage: {fileID: 0}
+  previewImage: {fileID: 2800000, guid: 2dd711d58cdbf9549a7b68dcdbc5dd08, type: 3}
