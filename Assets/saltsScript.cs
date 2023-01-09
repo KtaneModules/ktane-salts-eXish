@@ -2,23 +2,12 @@
 using System.Collections;
 using System.Text.RegularExpressions;
 using KModkit;
-using KTMissionGetter;
 using UnityEngine;
 
 public class saltsScript : MonoBehaviour
 {
 	private void Start()
 	{
-		if (Mission.ID == MISSION_ID)
-		{
-			_isTFA = true;
-			ghost.material.mainTexture = tweet;
-			Debug.LogFormat("[Salts #{0}] This Salts is secretly Twitter. It will solve automatically at the end of the other bomb.", new object[]
-			{
-				_id
-			});
-			return;
-		}
 		int num = 0;
 		foreach (int num2 in GetComponent<KMBombInfo>().GetSerialNumberNumbers())
 		{
@@ -38,10 +27,6 @@ public class saltsScript : MonoBehaviour
 
 	private bool Press()
 	{
-		if (_isTFA)
-		{
-			return false;
-		}
 		GetComponent<KMSelectable>().AddInteractionPunch(0.1f);
 		if (waiting != null)
 		{
@@ -109,11 +94,6 @@ public class saltsScript : MonoBehaviour
 
 	private IEnumerator ProcessTwitchCommand(string command)
 	{
-		if (_isTFA)
-		{
-			yield return "sendtochat Tweet tweet! I am Twitter and you cannot stop me!";
-			yield break;
-		}
 		Match i;
 		if ((i = Regex.Match(command, "^\\s*blan\\s*jumpscare\\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant)).Success)
 		{
@@ -139,13 +119,6 @@ public class saltsScript : MonoBehaviour
 
 	private IEnumerator TwitchHandleForcedSolve()
 	{
-		if (_isTFA)
-		{
-			while (true)
-			{
-				yield return true;
-			}
-		}
 		if (waiting != null)
         {
 			if ((state == 0 && count > (answer1 + 1)) || (state == 1 && count > (answer2 + 1)))
@@ -196,8 +169,6 @@ public class saltsScript : MonoBehaviour
 
 	public Texture blan;
 
-	public Texture tweet;
-
 	public Renderer ghost;
 
 	private Coroutine waiting;
@@ -205,10 +176,6 @@ public class saltsScript : MonoBehaviour
 	private int _id = ++_idc;
 
 	private static int _idc;
-
-	private const string MISSION_ID = "mod_twitterForAndroid_tfa";
-
-	private bool _isTFA;
 
 	private readonly string TwitchHelpMessage = "\"!{0} tap 3\" taps the module 3 times.";
 }
